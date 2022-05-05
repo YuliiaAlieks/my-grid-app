@@ -1,0 +1,10 @@
+.page-size {
+    display: flex;
+    justify-content: right;
+    margin-left: 12px;
+    margin-bottom: 8px;
+}
+
+.page-size span {
+    margin-right: 8px;
+}

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+body {
+    background-color: #282c34;
+}
+
+h1, h2, h3 {
+    color:gold;
+    font-family: 'Righteous', cursive;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.search-input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    width: 500px;
+    height: 40px;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+button {
+    color: gold
+}
