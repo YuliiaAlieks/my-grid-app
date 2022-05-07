@@ -17,7 +17,6 @@ export const fetchUsers = createAsyncThunk(
         try {
             const response = await fetch(`${baseUrl}/api/users${query}`)
                 .then(res => res.json());
-            // console.log("🧚 ~ response", response);
             return response;
         }
         catch (err) {
@@ -39,8 +38,6 @@ const initialState: UsersState = {
 }
 
 
-
-
 export const usersSlice = createSlice({
     name: 'users',
     initialState,
@@ -50,7 +47,6 @@ export const usersSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<FetchUsersApiResponse>) => {
-                console.log("🧚 ~ action", action)
                 state.users = normalizeUsers(action.payload.results);
                 state.status = 'success';
             })

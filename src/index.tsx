@@ -13,7 +13,7 @@ ReactDOM.render(
       <Provider store={store} >
         <Routes>
           <Route path='/' element={<App />} />
-          <Route path='/api/users/24' element={<UserDetails />} />
+          <Route path='/users/:userId' element={<UserDetails />} />
         </Routes>
       </Provider>
     </BrowserRouter>

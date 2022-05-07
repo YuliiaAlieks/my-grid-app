@@ -47,7 +47,7 @@ export function UsersList() {
                 display: 'flex',
                 width: '70px',
                 justifyContent: 'center'
-            }} to="/api/users/24" >
+            }} to="/users/37" >
                 Details
             </Link>
             {

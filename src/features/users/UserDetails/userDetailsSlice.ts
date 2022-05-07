@@ -3,7 +3,7 @@ import { baseUrl } from "../../../utils/config";
 import { normalizeUserDetails, normalizeUsers } from "../../../utils/utils";
 import { FetchUserDetailsApiResponse, NormalizedUserDetails } from "../types";
 
-type FetchUserId = number;
+type FetchUserId = string;
 
 export const fetchUserDetails = createAsyncThunk(
     'users/fetchUserDetails',
@@ -11,7 +11,6 @@ export const fetchUserDetails = createAsyncThunk(
         try {
             const response = await fetch(`${baseUrl}/api/users/${params}`)
                 .then(res => res.json());
-            console.log("🧚 ~ response", response)
             return response;
         } catch (err) {
             return rejectWithValue(err);
@@ -50,11 +49,8 @@ export const userDetailsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchUserDetails.fulfilled, (state, action: PayloadAction<FetchUserDetailsApiResponse>) => {
-                console.log("🧚 ~ action", action)
                 state.userDetails = normalizeUserDetails(action.payload);
-                state.status = 'success';
-                console.log('success');
-                
+                state.status = 'success';                
             })
             .addCase(fetchUserDetails.pending, (state) => {
                 state.status = 'loading'

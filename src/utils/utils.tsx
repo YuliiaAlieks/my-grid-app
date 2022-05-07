@@ -27,7 +27,6 @@ export const normalizeUsers = (apiUsers: ApiUser[]): NormalizedUser[] => {
 }
 
 export const normalizeUserDetails = (apiUserDetails: ApiUserDetails): NormalizedUserDetails => {
-    console.log("🧚 ~ apiUserDetails", apiUserDetails)
     const normalizeUserDetails = {
         gender: apiUserDetails.gender,
         name: `${apiUserDetails.name.first} ${apiUserDetails.name.last}`,

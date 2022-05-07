@@ -1,39 +1,36 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import './style.css'
 import { fetchUserDetails } from "./userDetailsSlice";
 import { RootState, useAppDispatch } from "../../../store";
+import { Loader } from "../../../components/Loader/Loader";
+import { DefaultErrorMessage } from "../../../components/DefaultErrorMessage/DefaultErrorMessage";
+import { UserDetailsCard } from "./UserDetailsCard";
 
 export const UserDetails = () => {
-    
-    
-    let id = 21;
-    const {userDetails, status } = useSelector((state: RootState) => state.userDetails);
-    console.log("🧚 ~ userDetails 1 in the component", userDetails)
-
-    
+    const { userId } = useParams();
+    const { userDetails, status } = useSelector((state: RootState) => state.userDetails);
     const dispatch = useAppDispatch();
-    
+
     useEffect(() => {
-        dispatch(fetchUserDetails(id));
+        userId && dispatch(fetchUserDetails(userId));
     }, []);
 
-    const registerDate = new Date(userDetails.registerDate).toLocaleDateString()
+    const registerDate = new Date(userDetails.registerDate).toLocaleDateString();
+
+    if(status === 'loading') {
+        return <Loader/>
+    }
+
+    if(status === 'error') {
+        return <DefaultErrorMessage />
+    }
 
     return (
         <div >
             <h2>User Details</h2>
-            <h3>{userDetails.name} </h3>
-            <h3>( {userDetails.username} )</h3>
-            <img src={userDetails.image} alt="Image" />
-            <div>
-                <p> {userDetails.address} </p>
-                <p>Email: {userDetails.email}</p>
-                <p>Phone: {userDetails.phone}</p>
-                <p>Age: {userDetails.age} </p>
-                <p>Nationality: {userDetails.nationality} </p>
-                <p>Registered on: {registerDate} </p>
-            </div>
-
+            <UserDetailsCard userDetails={userDetails} registerDate={registerDate}/>
         </div>
     );
 }
