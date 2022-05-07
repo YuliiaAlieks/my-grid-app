@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { FetchUsersApiResponse, NormalizedUser } from "./types";
 import { buildQuery, normalizeUsers } from "../../utils/utils";
 import { baseUrl } from "../../utils/config";
@@ -50,6 +50,7 @@ export const usersSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<FetchUsersApiResponse>) => {
+                console.log("🧚 ~ action", action)
                 state.users = normalizeUsers(action.payload.results);
                 state.status = 'success';
             })
@@ -62,6 +63,8 @@ export const usersSlice = createSlice({
             })
     }
 });
+
+
 
 export const { resetUsers } = usersSlice.actions;
 

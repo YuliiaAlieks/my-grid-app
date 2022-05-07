@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import SearchBox from "../../components/SearchBox/SearchBox";
@@ -8,10 +8,11 @@ import { fetchUsers, resetUsers } from "./usersSlice";
 import { UsersGrid } from "./UsersGrid";
 import { UsersHeader } from "../../components/UsersHeader/UsersHeader";
 import { DefaultErrorMessage } from "../../components/DefaultErrorMessage/DefaultErrorMessage";
+import { Link } from "react-router-dom";
 
 
 export function UsersList() {
-    const {  status } = useSelector((state: RootState) => state.users);
+    const { status } = useSelector((state: RootState) => state.users);
 
     const dispatch = useAppDispatch();
 
@@ -40,11 +41,21 @@ export function UsersList() {
         <div>
             <SearchBox onSearch={searchHandler} />
             <UsersHeader />
+            <Link style={{
+                color: 'white',
+                border: 'solid white 4px',
+                display: 'flex',
+                width: '70px',
+                justifyContent: 'center'
+            }} to="/api/users/24" >
+                Details
+            </Link>
             {
                 status !== 'error'
-                ? <UsersGrid />
-                :  <DefaultErrorMessage />
+                    ? <UsersGrid />
+                    : <DefaultErrorMessage />
             }
+
         </div>
 
     )

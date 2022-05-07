@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import {debounce} from "../../utils/utils";
+import { debounce } from "../../utils/utils";
 
 
 type Props = {
@@ -12,7 +12,7 @@ const SearchBox = ({ onSearch }: Props) => {
     const [input, setInput] = useState('');
 
     const debouncedOnChange = useCallback(
-        debounce((input) => onSearch(input), 1000),[onSearch]
+        debounce((input) => onSearch(input), 1000), [onSearch]
     );
     // const debouncedOnChange = debounce((input) => onSearch(input), 1000);
 
@@ -23,7 +23,12 @@ const SearchBox = ({ onSearch }: Props) => {
     }
 
     return (
-        <input className="search-input" type="search" placeholder="Search" value={input} onChange={handleChange} />
+        <input
+            className="search-input"
+            type="search"
+            placeholder="Search"
+            value={input}
+            onChange={handleChange} />
     );
 }
 
