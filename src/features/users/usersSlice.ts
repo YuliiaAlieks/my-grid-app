@@ -16,7 +16,8 @@ export const fetchUsers = createAsyncThunk(
         const query = buildQuery(params);
         try {
             const response = await fetch(`${baseUrl}/api/users${query}`)
-                .then(res => res.json());
+            .then(res => res.json());
+            // console.log("🧚 ~ response", response)
             return response;
         }
         catch (err) {

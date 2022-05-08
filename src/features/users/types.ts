@@ -27,7 +27,7 @@ export type ApiUser = {
         thumbnail: string
     },
     nat: string
-
+    id: number
 };
 
 export type ApiUserDetails = {
@@ -58,7 +58,8 @@ export type ApiUserDetails = {
     },
     dob: {
         age: number
-    }
+    },
+    id: number
 }
 
 export type NormalizedUser = {
@@ -70,6 +71,7 @@ export type NormalizedUser = {
     phone: string,
     thumbnail: string,
     nationality: string,
+    id: number
 }
 
 export type NormalizedUserDetails = {
@@ -82,5 +84,6 @@ export type NormalizedUserDetails = {
     image: string,
     nationality: string,
     address: string
-    age: number
+    age: number,
+    id: number
 }

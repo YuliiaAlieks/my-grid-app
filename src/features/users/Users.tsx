@@ -41,21 +41,11 @@ export function UsersList() {
         <div>
             <SearchBox onSearch={searchHandler} />
             <UsersHeader />
-            <Link style={{
-                color: 'white',
-                border: 'solid white 4px',
-                display: 'flex',
-                width: '70px',
-                justifyContent: 'center'
-            }} to="/users/37" >
-                Details
-            </Link>
             {
                 status !== 'error'
                     ? <UsersGrid />
                     : <DefaultErrorMessage />
             }
-
         </div>
 
     )

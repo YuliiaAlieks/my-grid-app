@@ -20,6 +20,7 @@ export const normalizeUsers = (apiUsers: ApiUser[]): NormalizedUser[] => {
             phone: u.phone,
             thumbnail: u.picture.thumbnail,
             nationality: u.nat,
+            id: u.id
         };
     });
 
@@ -38,7 +39,8 @@ export const normalizeUserDetails = (apiUserDetails: ApiUserDetails): Normalized
         nationality: apiUserDetails.nat,
         address: `${apiUserDetails.location.street.number} ${apiUserDetails.location.street.name}, 
             ${apiUserDetails.location.city}, ${apiUserDetails.location.country}`,
-        age: apiUserDetails.dob.age
+        age: apiUserDetails.dob.age,
+        id: apiUserDetails.id
     };
 
     return normalizeUserDetails;

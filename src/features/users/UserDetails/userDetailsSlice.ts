@@ -34,7 +34,8 @@ const initialState: UserDetailsState = {
         image: 'n/a',
         nationality: 'n/a',
         address: 'n/a',
-        age: 0
+        age: 0,
+        id: -1
     },
     status: 'idle'
 }
