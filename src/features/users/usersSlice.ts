@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { FetchUsersApiResponse, NormalizedUser } from "./types";
 import { buildQuery, normalizeUsers } from "../../utils/utils";
 import { baseUrl } from "../../utils/config";
@@ -16,8 +16,8 @@ export const fetchUsers = createAsyncThunk(
         const query = buildQuery(params);
         try {
             const response = await fetch(`${baseUrl}/api/users${query}`)
-                .then(res => res.json());
-            // console.log("🧚 ~ response", response);
+            .then(res => res.json());
+            // console.log("🧚 ~ response", response)
             return response;
         }
         catch (err) {
@@ -37,8 +37,6 @@ const initialState: UsersState = {
     users: [],
     status: 'idle'
 }
-
-
 
 
 export const usersSlice = createSlice({
@@ -62,6 +60,8 @@ export const usersSlice = createSlice({
             })
     }
 });
+
+
 
 export const { resetUsers } = usersSlice.actions;
 

@@ -8,17 +8,19 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { Button } from "../../components/Button/Button";
 import { PageSizeOptions } from "../../components/PageSizeOptions/PageSizeOptions";
+import { useNavigate } from "react-router-dom";
 
 
 export function UsersGrid() {
     const { users, status } = useSelector((state: RootState) => state.users);
+    const navigate = useNavigate();
     const gridRef: any = useRef();
 
     const columnDefs: ColDef[] = [
-        { headerName: 'Gender', field: 'gender' },
         { headerName: 'Name', field: 'name' },
+        { headerName: 'User Name', field: 'username', },
         { headerName: 'Email', field: 'email' },
-        { headerName: 'User Name', field: 'username' },
+        { headerName: 'Gender', field: 'gender' },
         {
             headerName: 'Register Date', field: 'registerDate', cellRenderer: (data) => {
                 return data.value ? (new Date(data.value)).toLocaleDateString() : '';
@@ -27,6 +29,7 @@ export function UsersGrid() {
         { headerName: 'Phone', field: 'phone' },
         { headerName: 'Thumbnail', field: 'thumbnail' },
         { headerName: 'Nationality', field: 'nationality' },
+        { headerName: 'Id', field: 'id', hide: true }
     ];
 
     const defaultColDef = useMemo(() => ({
@@ -68,7 +71,7 @@ export function UsersGrid() {
     return (
         <div className='ag-theme-alpine-dark' >
             <Button onClick={onClearButtonClick} >Clear Highlighting</Button>
-            <PageSizeOptions onChange={onPageSizeChanged}/>
+            <PageSizeOptions onChange={onPageSizeChanged} />
             <AgGridReact
                 ref={gridRef}
                 rowData={rowData}
@@ -80,6 +83,10 @@ export function UsersGrid() {
                 pagination={true}
                 paginationPageSize={5}
                 suppressDragLeaveHidesColumns
+                onRowClicked={(e) => {
+                    const id = e.data.id;
+                    navigate(`/users/${id}`)
+                }}
             />
         </div>
     )
