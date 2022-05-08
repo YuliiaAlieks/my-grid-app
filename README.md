@@ -8,6 +8,8 @@ Search bar functionality is debounced so the search happens after user stops typ
 Pagination is provided by AgGrid. 
 On the first loading all the result from the data base are requested.
 
+Clicking on a row forwards to a details page of that particular user.
+
 ## Available Scripts
 
 In the project directory, you can run:
