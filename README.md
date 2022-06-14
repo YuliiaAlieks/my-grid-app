@@ -1,5 +1,5 @@
 # Getting Started
-My Grid App is a single page application built with CRA, Redux Toolkit and Typescript. The App visualises a grid based on AgGrid library with users. There is a mock server included to provide an API for fetch requests. 
+My Grid App is a single page application built with CRA, Redux Toolkit and Typescript. The App visualizes a grid based on AgGrid library with users. There is a mock server included to provide an API for fetch requests. 
 
 ## Functionality 
 There is a Search bar where you can search for user/s by name, email and gender.
